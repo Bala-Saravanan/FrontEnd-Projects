@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  background-color: hsl(233, 47%, 7%);
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
+}
+
+.container section {
+  margin: 100px;
+  color: hsl(0, 0%, 100%);
+}
+
+.container section .content h2 {
+  padding: 30px 0;
+  font-size: 3rem;
+}
+
+.container section .content h2 span {
+  color: hsl(277, 64%, 61%);
+}
+
+.container section .content p {
+  max-width: 500px;
+  padding-bottom: 40px;
+  font-size: 1.5rem;
+  line-height: 2.2rem;
+  color: hsla(0, 0%, 100%, 0.75);
+}
+
+.container section .insights ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 0;
+}
+
+.container section .insights ul li {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: hsla(0, 0%, 100%, 0.6);
+}
+
+.container section .insights ul li span {
+  padding-bottom: 10px;
+  font-weight: 900;
+  font-size: 2rem;
+  color: hsla(0, 0%, 100%, 0.75);
+}
+
+.container aside {
+  background-color: hsl(277, 64%, 61%);
+  display: inline-block;
+  position: relative;
+}
+
+.container aside img {
+  width: 50vw;
+  height: 100vh;
+  mix-blend-mode: multiply;
+}
+
+@media (max-width: 375px) {
+  .container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

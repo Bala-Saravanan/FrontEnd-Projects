@@ -1,0 +1,73 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: url(/project1/images/library-bg.jfif) no-repeat center center/
+    cover;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  background-color: #262626;
+  color: #fff;
+  padding: 5px 20px;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  margin: 20px;
+}
+.main-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px;
+}
+
+.main-content .text-area {
+  width: 500px;
+  color: #726666;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+
+.main-content .author {
+  margin: 20px;
+  text-align: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: tomato;
+  letter-spacing: 1rem;
+}
+
+.btn-container {
+  text-align: center;
+  margin: 10px 20px;
+}
+
+.btn-container button {
+  padding: 10px 20px;
+  background-color: #262626;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
+
+.btn-container button:active {
+  background-color: lightblue;
+  color: #726666;
+}
