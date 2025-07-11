@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cursor Animation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="hero">
+      <h2>Hi I'm,</h2>
+      <h1 class="name">Bala Saravanan</h1>
+      <p
+        class="designation"
+        data-typewriter="Full Stack Developer, Frontend Developer, Backend Developer, Web Developer"
+      ></p>
+    </div>
+    <div class="circular">
+      <div class="logo"></div>
+      <div class="text">
+        <p>Full Stack Developer - Bala Saravanan -</p>
+      </div>
+    </div>
+    <div class="marquee-container left-tilted">
+      <div class="marquee-track">
+        <span
+          >Full Stack Developer - Bala Saravanan - Real-World Projects
+        </span>
+        <span
+          >Full Stack Developer - Bala Saravanan - Real-World Projects
+        </span>
+      </div>
+    </div>
+
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <span
+          >Passionate Coder - Clean Design - Thoughtful Code - Lifelong Learner
+          -</span
+        >
+        <span
+          >Passionate Coder - Clean Design - Thoughtful Code - Lifelong Learner
+        </span>
+      </div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+    <script src="script.js"></script>
+    <!-- <script src="canvas.js"></script> -->
+    <script type="module">
+      import { ParticlesCanvas } from "./ParticlesCanvas.js";
+      const canvas = document.getElementById("canvas");
+      const particleCanvas = new ParticlesCanvas(canvas);
+      particleCanvas.start();
+    </script>
+    <script>
+      const text = document.querySelector(".text p");
+      const textLength = text.textContent.length;
+      text.innerHTML = text.textContent
+        .split("")
+        .map(
+          (char, i) =>
+            `<span style="transform:rotate(${
+              (360 * i) / textLength
+            }deg);">${char}</span>`
+        )
+        .join("");
+    </script>
+    <script>
+      class TypeWriter {
+        constructor(el, options) {
+          this.el = el;
+          this.words = [...this.el.dataset.typewriter.split(",")];
+          this.speed = this.options?.speed || 100;
+          this.delay = this.options?.delay || 1500;
+          this.repeat = this.options?.repeat || true;
+          this.init(this.words);
+        }
+
+        wait = (ms) =>
+          new Promise((resolve) => {
+            setTimeout(resolve, ms);
+          });
+
+        toggleTyping() {
+          this.el.classList.toggle("typing");
+        }
+
+        async typewrite(word) {
+          this.toggleTyping();
+          for (const letter of word) {
+            this.el.textContent += letter;
+            await this.wait(this.speed);
+          }
+          this.toggleTyping();
+          await this.wait(this.delay);
+          this.toggleTyping();
+          while (this.el.textContent.length !== 0) {
+            this.el.textContent = this.el.textContent.slice(0, -1);
+            await this.wait(this.speed);
+          }
+          this.toggleTyping();
+          await this.wait(this.delay);
+          this.toggleTyping();
+        }
+
+        async init(words) {
+          for (const word of words) {
+            await this.typewrite(word);
+            this.toggleTyping();
+          }
+          if (this.repeat) {
+            await this.init();
+          }
+        }
+      }
+      const el1 = new TypeWriter(document.querySelector("[data-typewriter]"));
+      console.log(el1);
+    </script>
+  </body>
+</html>
